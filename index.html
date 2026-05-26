@@ -3,149 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>John Passmore — WNYC</title>
+<title>John Passmore</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --ink: #1a1814; --ink-light: #6b6760; --ink-faint: #c8c4bc;
-  --paper: #f7f5f0; --accent: #c4501a;
-  --mono: 'DM Mono', monospace; --serif: 'Playfair Display', Georgia, serif;
-}
-body { background: var(--paper); color: var(--ink); font-family: var(--mono); font-weight: 300; }
-
-header { padding: 4rem 3rem 3rem; border-bottom: 1px solid var(--ink-faint); max-width: 1100px; margin: 0 auto; }
-.name { font-family: var(--serif); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; }
-.name em { font-style: italic; color: var(--accent); }
-.tagline { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); margin-top: 1rem; }
-
-main { max-width: 1100px; margin: 0 auto; padding: 2rem 3rem 6rem; }
-.status-bar { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); padding-bottom: 2rem; border-bottom: 1px solid var(--ink-faint); margin-bottom: 2.5rem; }
-
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
-
-.card {
-  background: #fff;
-  border: 0.5px solid var(--ink-faint);
-  border-radius: 4px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  transform: translateY(12px);
-  animation: fadeUp 0.4s forwards;
-}
-@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-
-.card-img-wrap {
-  width: 100%;
-  aspect-ratio: 16/9;
-  background: var(--ink-faint);
-  overflow: hidden;
-  position: relative;
-}
-.card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.card-img-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-light);
-}
-
-.card-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; gap: 0.75rem; }
-
-.card-title {
-  font-family: var(--serif);
-  font-size: 1.05rem;
-  font-weight: 400;
-  line-height: 1.35;
-  color: var(--ink);
-}
-
-.card-tease {
-  font-size: 0.78rem;
-  color: var(--ink-light);
-  line-height: 1.6;
-  flex: 1;
-}
-
-.card-actions {
-  margin-top: auto;
-  padding-top: 0.75rem;
-  border-top: 0.5px solid var(--ink-faint);
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: none;
-  border: 1px solid var(--ink-faint);
-  color: var(--ink-light);
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.35rem 0.8rem;
-  cursor: pointer;
-  transition: all 0.15s;
-  border-radius: 2px;
-  text-decoration: none;
-}
-.btn:hover { border-color: var(--ink); color: var(--ink); }
-.btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
-.btn svg { width: 9px; height: 9px; flex-shrink: 0; }
-
-.audio-wrap { display: none; padding-top: 0.75rem; }
-.audio-wrap.visible { display: block; }
-.audio-wrap audio { width: 100%; height: 36px; }
-
-footer {
-  max-width: 1100px; margin: 0 auto; padding: 2rem 3rem;
-  border-top: 1px solid var(--ink-faint);
-  font-size: 0.7rem; letter-spacing: 0.05em; color: var(--ink-faint);
-  display: flex; justify-content: space-between;
-}
-
-@media (max-width: 600px) {
-  header, main, footer { padding-left: 1.25rem; padding-right: 1.25rem; }
-  .grid { grid-template-columns: 1fr; }
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<nav>
+  <a class="nav-name" href="index.html">John Passmore</a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Writing</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
 <header>
-  <h1 class="name">John <em>Passmore</em></h1>
-  <p class="tagline">New York Public Radio &mdash; WNYC Articles</p>
+  <h1 class="name">John Passmore</h1>
+  <p class="tagline">New York Public Radio &mdash; WNYC &middot; WQXR &middot; Gothamist</p>
 </header>
-
 <main>
   <div class="status-bar">51 articles &mdash; WNYC Archives</div>
   <div class="grid" id="grid"></div>
 </main>
-
 <footer>
   <span>John Passmore</span>
   <span>New York Public Radio</span>
 </footer>
-
 <script>
 const articles = [
   {pk:735545,title:"Our Trouble with Trash in 1969",img:"https://media.wnyc.org/i/800/800/l/80/1/AP_6802110160.jpg",tease:"The 1960s \u2018packaging revolution\u2019 brought with it some creative clothing ideas as well as heaps of trash.",audio:"https://pdst.fm/e/dts.podtrac.com/pts/redirect.mp3/waaa.wnyc.org/archive_import/archive_import151640.mp3",url:"https://www.wnyc.org/story/nyc-garbage-crisis/"},
@@ -181,34 +64,24 @@ const articles = [
 ];
 
 let activeId = null;
-
 function toggleAudio(pk, btn) {
   const wrap = document.getElementById('audio-' + pk);
   if (activeId && activeId !== pk) {
     document.getElementById('audio-' + activeId).classList.remove('visible');
     const oldBtn = document.querySelector('[data-pk="' + activeId + '"]');
-    if (oldBtn) { oldBtn.classList.remove('active'); oldBtn.textContent = '▶ Listen'; }
+    if (oldBtn) { oldBtn.classList.remove('active'); oldBtn.textContent = '\u25b6 Listen'; }
     const oldAudio = document.querySelector('#audio-' + activeId + ' audio');
     if (oldAudio) oldAudio.pause();
   }
   if (wrap.classList.contains('visible')) {
-    wrap.classList.remove('visible');
-    btn.classList.remove('active');
-    btn.textContent = '▶ Listen';
-    const audio = wrap.querySelector('audio');
-    if (audio) audio.pause();
-    activeId = null;
+    wrap.classList.remove('visible'); btn.classList.remove('active'); btn.textContent = '\u25b6 Listen';
+    wrap.querySelector('audio').pause(); activeId = null;
   } else {
-    wrap.classList.add('visible');
-    btn.classList.add('active');
-    btn.textContent = '✕ Close';
-    activeId = pk;
+    wrap.classList.add('visible'); btn.classList.add('active'); btn.textContent = '\u2715 Close'; activeId = pk;
   }
 }
-
-const grid = document.getElementById('grid');
-grid.innerHTML = articles.map((a, i) => `
-  <div class="card" style="animation-delay:${i * 0.04}s">
+document.getElementById('grid').innerHTML = articles.map((a, i) => `
+  <div class="card" style="animation-delay:${i*0.04}s">
     <div class="card-img-wrap">
       <img class="card-img" src="${a.img}" alt="${a.title}" loading="lazy"
         onerror="this.parentElement.innerHTML='<div class=\'card-img-placeholder\'>WNYC</div>'">
@@ -217,17 +90,14 @@ grid.innerHTML = articles.map((a, i) => `
       <div class="card-title">${a.title}</div>
       <div class="card-tease">${a.tease}</div>
       <div class="card-actions">
-        <button class="btn" data-pk="${a.pk}" onclick="toggleAudio(${a.pk}, this)">▶ Listen</button>
-        <a class="btn" href="${a.url}" target="_blank" rel="noopener">↗ wnyc.org</a>
+        <button class="btn" data-pk="${a.pk}" onclick="toggleAudio(${a.pk}, this)">&#9654; Listen</button>
+        <a class="btn" href="${a.url}" target="_blank" rel="noopener">&#8599; wnyc.org</a>
       </div>
       <div class="audio-wrap" id="audio-${a.pk}">
-        <audio controls preload="none">
-          <source src="${a.audio}" type="audio/mpeg">
-        </audio>
+        <audio controls preload="none"><source src="${a.audio}" type="audio/mpeg"></audio>
       </div>
     </div>
-  </div>
-`).join('');
+  </div>`).join('');
 </script>
 </body>
 </html>
