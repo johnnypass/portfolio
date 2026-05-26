@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>John Passmore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --ink: #1a1814; --ink-light: #6b6760; --ink-faint: #c8c4bc; --paper: #f7f5f0; --accent: #c4501a; --mono: 'DM Mono', monospace; --serif: 'Playfair Display', Georgia, serif; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--mono); font-weight: 300; min-height: 100vh; }
+  header { padding: 4rem 3rem 3rem; border-bottom: 1px solid var(--ink-faint); max-width: 900px; margin: 0 auto; }
+  .name { font-family: var(--serif); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; }
+  .name em { font-style: italic; color: var(--accent); }
+  .tagline { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); margin-top: 1rem; }
+  main { max-width: 900px; margin: 0 auto; padding: 0 3rem 6rem; }
+  .status-bar { display: flex; align-items: baseline; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--ink-faint); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); }
+  .article-row { display: grid; grid-template-columns: 1fr 60px; gap: 1.5rem; align-items: baseline; padding: 1.25rem 0; border-bottom: 1px solid var(--ink-faint); opacity: 0; transform: translateY(8px); animation: fadeUp 0.3s forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .article-date { font-size: 0.7rem; letter-spacing: 0.05em; color: var(--ink-light); white-space: nowrap; }
+  .article-title a { font-family: var(--serif); font-size: 1.05rem; font-weight: 400; color: var(--ink); text-decoration: none; line-height: 1.4; transition: color 0.15s; }
+  .article-title a:hover { color: var(--accent); }
+  .article-tease { font-size: 0.75rem; color: var(--ink-light); margin-top: 0.35rem; line-height: 1.5; }
+  .article-type { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); text-align: right; }
+  .audio-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: 4px; vertical-align: middle; }
+  footer { max-width: 900px; margin: 0 auto; padding: 2rem 3rem; border-top: 1px solid var(--ink-faint); font-size: 0.7rem; letter-spacing: 0.05em; color: var(--ink-faint); display: flex; justify-content: space-between; }
+  @media (max-width: 600px) { header, main, footer { padding-left: 1.25rem; padding-right: 1.25rem; } .article-row { grid-template-columns: 1fr; gap: 0.25rem; } .article-type { text-align: left; } }
+</style>
+</head>
+<body>
+<header>
+  <h1 class="name">John <em>Passmore</em></h1>
+  <p class="tagline">New York Public Radio &mdash; WNYC &middot; WQXR &middot; Gothamist</p>
+</header>
+<main>
+  <div class="status-bar">
+    <span>Articles</span>
+    <span>51 articles</span>
+  </div>
+  <div id="articles"></div>
+</main>
+<footer>
+  <span>John Passmore</span>
+  <span>New York Public Radio</span>
+</footer>
+<script>
+const articles = [
+  {title:"Our Trouble with Trash in 1969",url:"http://www.wnyc.org/story/nyc-garbage-crisis/",newsdate:"2017-02-07",tease:"The 1960s \u2018packaging revolution\u2019 brought with it some creative clothing ideas as well as heaps of trash.",audio:true},
+  {title:"These 1960s Computer Dating Services Want to Know Your Drug of Choice",url:"http://www.wnyc.org/story/these-1960s-computer-dating-services-want-know-your-drug-choice/",newsdate:"2017-01-24",tease:"Dating apps making you anxious? Try these 1960s matchmaking algorithms!",audio:true},
+  {title:"When the Mob Infiltrated City Government",url:"http://www.wnyc.org/story/when-mob-infiltrated-city-government/",newsdate:"2016-02-24",tease:"Mayor John Lindsay responds to the arrest of Water Commissioner James Marcus for taking kickbacks from the mob.",audio:true},
+  {title:"The Song that Made Janis Ian the Most Notorious Folk Singer in America",url:"http://www.wnyc.org/story/janis-ian-folk-singer/",newsdate:"2015-10-22",tease:"Just a few months before Janis Ian became a household name at the age of 16, she performed five of her most controversial songs live in our studios.",audio:true},
+  {title:"Your Daily Subway Report From 1967",url:"http://www.wnyc.org/story/your-daily-subway-delays-1967/",newsdate:"2015-10-16",tease:"Isn\u2019t it nice to know the subway always had delays?",audio:true},
+  {title:"The Ballad of a Watergate Security Guard",url:"http://www.wnyc.org/story/nixon-resigns-and-someone-wrote-a-song/",newsdate:"2015-08-09",tease:"\u201cThe Ballad of Frank Wills\u201d tells the story of Nixon\u2019s demise from the perspective of the security guard who discovered the Watergate break-in.",audio:true},
+  {title:"\u201cThe Mother of Folk\u201d Jean Ritchie Dies",url:"http://www.wnyc.org/story/folk-music-revivalist-jean-ritchie-dies/",newsdate:"2015-06-02",tease:"We remember the life of Appalachia\u2019s most beloved dulcimer player with a 1982 live performance and interview.",audio:true},
+  {title:"Remembering Singer and Folklorist Guy Carawan",url:"http://www.wnyc.org/story/guy-carawan/",newsdate:"2015-05-08",tease:"Guy Carawan introduced \u201cWe Shall Overcome\u201d to the Civil Rights movement. We remember him with an in-studio performance from 1966.",audio:true},
+  {title:"The Brill Building\u2019s Hitmakers in Their Own Words",url:"http://www.wnyc.org/story/brill-buildings-hitmakers-their-own-words/",newsdate:"2015-02-05",tease:"Before the Beatles invaded America, much of top 40 music was written by men sitting in an office building in Midtown Manhattan.",audio:true},
+  {title:"This Is How the NYPD Once Handled Violent Criminals",url:"http://www.wnyc.org/story/guerrilla-warfare-listening-nypds-1961-new-recruit-training/",newsdate:"2015-01-02",tease:"Hear archived tape of a sergeant teaching new recruits about the \u201cguerrilla warfare\u201d of fighting crime.",audio:true},
+  {title:"Christmas Hymns from the Bowery Mission in 1961",url:"http://www.wnyc.org/story/christmas-day-bowery-mission/",newsdate:"2014-12-23",tease:"An audience of mostly homeless men at a Bowery Mission Christmas sermon are asked to stand and sing.",audio:true},
+  {title:"The 20-Minute Macbeth",url:"http://www.wnyc.org/story/youve-never-heard-shakespeare-quite/",newsdate:"2014-11-21",tease:"Brother Blue retells Shakespeare\u2019s Macbeth as \u201cMax\u2019s Blues\u201d using the idioms and language of the street.",audio:true},
+  {title:"When Click and Clack Performed Live Bluegrass and Answered Hilarious Fake Callers",url:"http://www.wnyc.org/story/tom-and-ray-magliozzi-perform-live-around-new-york/",newsdate:"2014-11-05",tease:"John Schaefer joked it\u2019s the \u201cquickest that I ever lost control of an interview.\u201d",audio:true},
+  {title:"Resist Much, Obey Little",url:"http://www.wnyc.org/story/85426-galway-kinnell-reads-walt-whitman/",newsdate:"2014-10-30",tease:"Galway Kinnell reads Whitman on the eve of the 2003 Iraq War. Kinnell died this week at the age of 87.",audio:true},
+  {title:"All the Serious Artists Have Moved to the East Village",url:"http://www.wnyc.org/story/all-serious-artists-have-moved-lower-east-side/",newsdate:"2014-10-23",tease:"A 1970 Pan Am audio tour of New York City\u2019s neighborhoods.",audio:true},
+  {title:"These Charming Kids Tell Really Scary Stories",url:"http://www.wnyc.org/story/these-charming-kids-tell-really-scarystories/",newsdate:"2014-10-16",tease:"Talking skulls, demonic wolves, and killer vampires\u2014kids told us their favorite spooky tales during WNYC\u2019s 1979 Storytelling Festival.",audio:true},
+  {title:"Siri Meets Her Grandpa",url:"http://www.wnyc.org/story/siri-meets-her-grandpa/",newsdate:"2014-10-03",tease:"We played Siri a 1962 recording of an IBM 704 computer singing \u201cDaisy Bell.\u201d Will she recognize her voice-synthesized forebears?",audio:true},
+  {title:"Thomas Wilfred and the Music of Light",url:"http://www.wnyc.org/story/thomas-wilfred-and-art-light/",newsdate:"2014-09-11",tease:"How a turn of the century lute player came to influence an entire generation of club VJs and video artists.",audio:true},
+  {title:"A Tour of 1970s Central Park",url:"http://www.wnyc.org/story/walking-tour-1970s-central-park/",newsdate:"2014-08-11",tease:"A casual summertime journey through a sprawling municipal treasure.",audio:true},
+  {title:"Listen to Rare, Beautiful Music from the Robeson Archives",url:"http://www.wnyc.org/story/paul-robeson-jr-interview-1976/",newsdate:"2014-04-28",tease:"In 1976, Paul Robeson Jr. came to the WNYC studios to share rare recordings from his father\u2019s influential life and singing career.",audio:true},
+  {title:"Happy Earth Day \u2014 Now Move Your Car",url:"http://www.wnyc.org/story/happy-earth-day-move-your-car/",newsdate:"2014-04-21",tease:"On the first Earth Day, April 22, 1970, Mayor Lindsay implores New Yorkers to be more thoughtful with their parking.",audio:true},
+  {title:"A Walking Tour of Don Draper\u2019s New York",url:"http://www.wnyc.org/story/don-drapers-midtown-tour/",newsdate:"2014-04-11",tease:"The year is 1971. Manhattan\u2019s Fur District is booming and Mad Men\u2019s Don Draper is about to enter a decade of possibilities.",audio:true},
+  {title:"Why Are These Men Twisting a Fish?",url:"http://www.wnyc.org/story/why-are-these-men-twisting-fish/",newsdate:"2014-04-03",tease:"Exploring the lively scene of the 1960s Fulton Fish Market.",audio:true},
+  {title:"How to Cook a Heart on Valentine\u2019s Day",url:"http://www.wnyc.org/story/how-to-cook-a-heart/",newsdate:"2014-02-13",tease:"Start your Valentine\u2019s night off right with these 1950s WNYC beef heart recipes.",audio:true},
+  {title:"When Weed Grew Wild in Williamsburg",url:"http://www.wnyc.org/story/weed-in-brooklyn/",newsdate:"2014-01-23",tease:"In 1951, marijuana grew everywhere, with seven foot high plants sprouting in fields from Williamsburg to Cobble Hill to East New York.",audio:true},
+  {title:"Robert Indiana\u2019s Complicated LOVE Affair",url:"http://www.wnyc.org/story/what-love/",newsdate:"2014-01-06",tease:"In this 1971 conversation from the archives, Indiana seemed much more optimistic about his iconic LOVE sculpture.",audio:true},
+  {title:"The Ghosts of Mayors Past Advise de Blasio on Dealing with Snow",url:"http://www.wnyc.org/story/ghosts-mayors-past-advise-de-blasio-eve-snowstorm/",newsdate:"2014-01-02",tease:"Listen to Mayors La Guardia, Lindsay, Giuliani, and Bloomberg handle a nervous public.",audio:true},
+  {title:"Sun Ra\u2019s Omniverse",url:"http://www.wnyc.org/story/sun-ras-omniverse/",newsdate:"2013-10-31",tease:"Sun Ra was certainly one of the more colorful characters in the history of Jazz.",audio:true},
+  {title:"Like Talking on the Phone but a Thousand Times More Thrilling!",url:"http://www.wnyc.org/story/empire-state-building-voice-o-graph-recording/",newsdate:"2013-09-27",tease:"A 1940s recording from the Voice-O-Graph automatic voice recorder on the 86th floor of the Empire State Building.",audio:true},
+  {title:"The Evil in Eavesdropping",url:"http://www.wnyc.org/story/298572-evil-eavesdropping/",newsdate:"2013-06-12",tease:"Long before FISA and PRISM, New York State politicians struggled with maintaining the balance between personal privacy and public safety.",audio:true}
+];
+
+const container = document.getElementById('articles');
+container.innerHTML = articles.map((a, i) => {
+  const date = new Date(a.newsdate).toLocaleDateString('en-US', {year:'numeric', month:'short'});
+  const tease = a.tease ? a.tease.slice(0, 120) + (a.tease.length > 120 ? '\u2026' : '') : '';
+  const type = a.audio ? '<span class="audio-dot"></span>audio' : 'text';
+  return `<div class="article-row" style="animation-delay:${i*0.025}s">
+    
+    <div class="article-title">
+      <a href="${a.url}" target="_blank" rel="noopener">${a.title}</a>
+      ${tease ? `<div class="article-tease">${tease}</div>` : ''}
+    </div>
+    <div class="article-type">${type}</div>
+  </div>`;
+}).join('');
+</script>
+</body>
+</html>
