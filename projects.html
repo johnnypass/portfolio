@@ -7,6 +7,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+  .project-card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 1.2rem;
+    filter: grayscale(20%);
+  }
+</style>
 </head>
 <body>
 <nav>
@@ -25,15 +35,7 @@
   <div class="project-grid">
 
     <div class="project-card" style="animation-delay:0s">
-      <div class="project-label">Personal Archive</div>
-      <div class="project-title">Passmore Family Archive</div>
-      <div class="project-desc">A private digital archive for the Passmore family — photographs, documents, and media spanning multiple generations, built on ResourceSpace open-source digital asset management. Access is by invitation.</div>
-      <div>
-        <a class="btn" href="https://passmorefamilyarchive.org" target="_blank" rel="noopener">&#8599; Visit Site</a>
-      </div>
-    </div>
-
-    <div class="project-card" style="animation-delay:0.1s">
+      <img class="project-card-img" src="https://tbma.si.edu/sites/default/files/inline-images/tbma-work-hmsg-shutterinterface_img_03.jpg" alt="Paul Sharits Shutter Interface installation — four 16mm projectors casting overlapping color fields">
       <div class="project-label">Film Preservation</div>
       <div class="project-title">Paul Sharits Collection</div>
       <div class="project-desc">A two-year preservation and re-exhibition effort for Paul Sharits' nine multi-projector installation works, undertaken with Anthology Film Archives, Greene Naftali Gallery, and the Sharits estate. Sharits' 1975 <em>Shutter Interface</em> — four overlapping 16mm film loops projecting color fields in a darkened gallery — is among the works documented by the Smithsonian's Time-Based Media program.</div>
@@ -42,7 +44,8 @@
       </div>
     </div>
 
-    <div class="project-card" style="animation-delay:0.2s">
+    <div class="project-card" style="animation-delay:0.1s">
+      <img class="project-card-img" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="object-fit:contain; background:#0d1117; padding: 2rem;">
       <div class="project-label">Code &amp; Tools</div>
       <div class="project-title">GitHub Projects</div>
       <div class="project-desc">A collection of scripts, services, and experiments spanning data visualization, AI and LLM tooling, metadata crosswalks and translators, and podcast infrastructure. Most work lives at the intersection of public media systems and open standards.</div>
@@ -51,7 +54,8 @@
       </div>
     </div>
 
-    <div class="project-card" style="animation-delay:0.3s">
+    <div class="project-card" style="animation-delay:0.2s">
+      <img class="project-card-img" src="https://psap.library.illinois.edu/images/guide/audiotape/audiotape_open-reel_10.jpg" alt="Quarter-inch open-reel archival audio tape">
       <div class="project-label">Teaching</div>
       <div class="project-title">Pratt Institute — Found-Sound Tape Digitization</div>
       <div class="project-desc">As a visiting professor at Pratt Institute's School of Information, I led a cohort of MLIS candidates through a hands-on preservation practicum: physical inspection, repair, metadata creation, digital repository workflow, and the legal landscape around orphan works — all applied to a collection of found ¼″ open-reel tapes from the 1970s. Digitized items are archived in the Internet Archive's Pratt Institute collection.</div>
@@ -60,12 +64,23 @@
       </div>
     </div>
 
-    <div class="project-card" style="animation-delay:0.4s">
+    <div class="project-card" style="animation-delay:0.3s">
+      <img class="project-card-img" src="https://teenbe.at/images/artists/nethersl.jpg" alt="Nethers band photo">
       <div class="project-label">Music</div>
       <div class="project-title">Nethers — <em>In Fields We Will Lie</em></div>
       <div class="project-desc">Washington D.C.'s Nethers played story-songs of doomed canaries, heiresses hiding from plagues, and parades at sea — a spectral blend of pop, country, and psych released on Teen-Beat Records. NPR featured the band in 2008 around their album <em>In Fields We Will Lie</em>.</div>
       <div>
         <a class="btn" href="https://www.npr.org/2008/06/12/91420921/nethers-espirit-de-nethers" target="_blank" rel="noopener">&#8599; NPR Feature</a>
+      </div>
+    </div>
+
+    <div class="project-card" style="animation-delay:0.4s">
+      <img class="project-card-img" src="passmore-archive.png" alt="Vintage photograph of five boys in front of a tent, circa early 1900s — from the Passmore Family Archive">
+      <div class="project-label">Personal Archive</div>
+      <div class="project-title">Passmore Family Archive</div>
+      <div class="project-desc">A private digital archive for the Passmore family — photographs, documents, and media spanning multiple generations, built on ResourceSpace open-source digital asset management. Access is by invitation.</div>
+      <div>
+        <a class="btn" href="https://passmorefamilyarchive.org" target="_blank" rel="noopener">&#8599; Visit Site</a>
       </div>
     </div>
 
